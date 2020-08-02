@@ -3,13 +3,14 @@ class CloudFunction:
 
     __deploy__ = True
 
-    def __init__(self, name=None, func=None, requirements=None, description=None, memory=256, public=False):
+    def __init__(self, name=None, func=None, requirements=None, description=None, memory=256, public=False, trigger=None):
         self.func = func
         self.name = name or func.__name__
         self.requirements = requirements or []
         self.description = description or getattr(func, '__doc__', '')
         self.memory = memory
         self.public = public
+        self.trigger = trigger
 
     def __call__(self, *args, **kwargs):
         return self.func(*args, **kwargs)

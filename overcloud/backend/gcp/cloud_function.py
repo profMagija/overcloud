@@ -72,7 +72,7 @@ class GcpCloudFunction(cloud_function.CloudFunction):
             source=srcfilename
         )
 
-        backend.tf.resource(
+        cfr = backend.tf.resource(
             'google_cloudfunctions_function', self.name,
             name=f'{backend.config.name}-{self.name}',
             runtime='python37',
@@ -80,13 +80,20 @@ class GcpCloudFunction(cloud_function.CloudFunction):
             entry_point='__entry',
             source_archive_bucket='${google_storage_bucket.cf-storage-bucket.name}',
             source_archive_object=f'${{google_storage_bucket_object.cf-{self.name}-source.name}}',
-            trigger_http=True,
             available_memory_mb=self.memory,
             environment_variables={
                 'OC_HASH': _hash(function_code)
             },
             depends_on=[f'google_storage_bucket_object.cf-{self.name}-source']
         )
+
+        if self.trigger is None:
+            cfr['trigger_http'] = True
+        else:
+            cfr['event_trigger'] = {
+                'event_type': 'google.pubsub.topic.publish',
+                'resource': self.trigger.full_name
+            }
 
         if self.public:
             backend.tf.resource(

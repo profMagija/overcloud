@@ -25,6 +25,7 @@ class MessageQueue:
     def _register(self, backend):
         self.project = backend.project
         self._tf_name = f'{backend.config.name}-{self.topic_name}'
+        self.full_name = f'projects/{backend.project}/topics/{self._tf_name}'
         backend.tf.resource(
             'google_pubsub_topic', self.topic_name,
             name=self._tf_name
