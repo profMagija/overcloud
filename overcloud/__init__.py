@@ -1,5 +1,5 @@
 from functools  import update_wrapper as _uw
-from .items import CloudFunction
+from .items import CloudFunction, MessageQueue
 
 
 def _deco_constructor(cls):

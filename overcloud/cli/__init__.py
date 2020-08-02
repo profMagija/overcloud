@@ -33,10 +33,9 @@ def _iterate_items(item, callback):
 def deploy():
     cfg = _load_config()
     print(cfg)
-    backend = get_backend(cfg.backend).backend(cfg)
+    backend = get_backend(cfg.backend, cfg)
 
-    entry = __import__(cfg.entry)
-    _iterate_items(entry, backend.register)
+    __import__(cfg.entry)
 
     backend.deploy()
 
