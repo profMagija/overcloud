@@ -1,5 +1,8 @@
+import json
 from overcloud import cloud_function
 
-@cloud_function('test')
+@cloud_function(public=True)
 def test_function(a):
-    return 'Hello there!', 200
+    return json.dumps({'m': 'a'}), 200
+
+print('oh')

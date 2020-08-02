@@ -2,6 +2,6 @@
 
 <dl>
 <dt>overcloud</dt>
-<dd>Covered or obscured, as with clouds or mist. Clouded over.</dd>
+<dd>Cover or obscure, as with clouds or mist. Clouded over.</dd>
 </dl>
 
