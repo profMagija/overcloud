@@ -25,7 +25,7 @@ class backend:
         if fn:
             fn(item)
         else:
-            raise TypeError(type(item))
+            raise TypeError(type(item), item)
 
     def register_CloudFunction(self, cf):
         self.tf.resource(

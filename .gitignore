@@ -1,1 +1,6 @@
 .overcast
+*.pyc
+
+*.egg-info
+dist
+build

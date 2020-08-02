@@ -1,4 +1,4 @@
-from overcast import cloud_function
+from overcloud import cloud_function
 
 @cloud_function('test')
 def test_function(a):
