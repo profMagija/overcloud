@@ -30,7 +30,7 @@ name: YOUR_NAME-testing
 
 # this is backend-specific configuration, we only specify the GCP project
 backend_config:
-  project: project-name-here
+  project: YOUR-PROJECT
 ```
 
 This is your config file. Mostly used for static configuration
@@ -54,3 +54,5 @@ After that, you can say
 overcast deploy
 ```
 in your shell, and answer 'yes' when prompted. If all goes well, 'terraform' (which is used in the background) should deploy all the resources (may take a while).
+
+Now you can reach your cloud function at `https://us-central1-YOUR_PROJECT.cloudfunctions.net/YOUR_NAME-testing-test_function`
