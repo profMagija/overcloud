@@ -30,7 +30,7 @@ class backend:
     def register_CloudFunction(self, cf):
         self.tf.resource(
             'google_storage_bucket', 'cf-storage-bucket',
-            name=f'overcast-{self.config.name}-cfsrc',
+            name=f'overcloud-{self.config.name}-cfsrc',
         )
 
         data = dill.dumps(cf.func)
@@ -48,7 +48,7 @@ class backend:
 
         self.tf.resource(
             'google_storage_bucket_object', f'cf-{cf.name}-source',
-            name=f'overcast-cf-{cf.name}-src.zip',
+            name=f'overcloud-cf-{cf.name}-src.zip',
             bucket='${google_storage_bucket.cf-storage-bucket.name}',
             source=srcfilename
         )
@@ -65,9 +65,9 @@ class backend:
         )
 
     def deploy(self):
-        os.makedirs('.overcast', exist_ok=True)
-        with open('.overcast/plan.tf.json', 'w') as planfile:
+        os.makedirs('.overcloud', exist_ok=True)
+        with open('.overcloud/plan.tf.json', 'w') as planfile:
             json.dump(self.tf.to_dict(), planfile, indent=2)
-        cli = TfCli(working_dir='.overcast')
+        cli = TfCli(working_dir='.overcloud')
         cli.init(capture_output=False)
         cli.apply(capture_output=False)

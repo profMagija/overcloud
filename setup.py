@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="overcast", # Replace with your own username
+    name="overcloud", # Replace with your own username
     version="0.0.1",
     author="Nikola Bebić",
     author_email="nikola.bebic99@gmail.com",
     description="a simple way to make clouds",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/profMagija/overcast",
+    url="https://github.com/profMagija/overcloud",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -21,7 +21,7 @@ setuptools.setup(
     python_requires='>=3.6',
     entry_points={
         'console_scripts': [
-            "overcast = overcast.cli:main"
+            "overcloud = overcloud.cli:main"
         ]
     }
 )

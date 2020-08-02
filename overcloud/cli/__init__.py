@@ -7,9 +7,9 @@ import os
 
 def _load_config():
     return config.config(
-        ('env', 'OVERCAST_'),
-        ('json', 'overcast.json', True) if os.path.exists('overcast.json') else ('dict', {}),
-        ('yaml', 'overcast.yaml', True) if os.path.exists('overcast.yaml') else ('dict', {})
+        ('env', 'OVERCLOUD_'),
+        ('json', 'overcloud.json', True) if os.path.exists('overcloud.json') else ('dict', {}),
+        ('yaml', 'overcloud.yaml', True) if os.path.exists('overcloud.yaml') else ('dict', {})
     )
 
 

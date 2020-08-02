@@ -1,5 +1,5 @@
 backend: gcp
 entry: test
-name: overcast-testing
+name: overcloud-testing
 backend_config:
   project: bebic-test-project
